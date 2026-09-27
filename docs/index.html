@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>श्रीली Rental Store — Bridal, Festive &amp; Party Wear on Rent | Kodoli, Satara</title>
+<meta name="description" content="श्रीली Rental Store, Kodoli, Satara. Bridal lehengas, festive wear, party gowns and jewellery on rent. Check availability and book your dates online.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="श्रीली Rental Store — Elegant styles for every occasion">
+<meta property="og:description" content="Bridal · Festive · Party Wear on rent. Kodoli, Satara.">
+<meta name="theme-color" content="#4a1033">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <!-- Drop the logo at assets/img/logo.png and it replaces the lettermark -->
+      <span class="mark" id="brandMark">
+        <img src="assets/img/logo.png" alt="श्रीली Rental Store"
+             style="width:100%;height:100%;object-fit:cover"
+             onerror="this.remove();document.getElementById('brandMark').textContent='श्री';">
+      </span>
+      <span class="txt">
+        <strong>श्रीली</strong>
+        <span>Rental Store</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="collection.html">Shop now</a>
+      <a href="#story">Our story</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#owner">About</a>
+      <a href="#how">How it works</a>
+      <a href="#enquire">Ask us</a>
+      <a href="#visit">Visit us</a>
+      <a class="btn btn-primary btn-sm" href="account.html">Sign in</a>
+    </nav>
+  </div>
+</header>
+
+<!-- --------------------------------------------------------------- hero -->
+<section class="hero" id="top">
+  <!-- The owner's film, running behind the hero. Lightly softened so the
+       type stays readable over it; the scrim does the rest. -->
+  <div class="hero-wash" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto" onerror="this.remove()">
+      <source src="assets/video/hero-owner.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <span class="hero-glow" aria-hidden="true"></span>
+
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+      <p class="eyebrow">Kodoli · Satara · Since 2024</p>
+      <h1>Elegant styles<br>for <em class="foil">every occasion</em></h1>
+      <p class="hero-lead">
+        Bridal lehengas, festive wear, party gowns and jewellery — on rent.
+        Check what's free on your dates and reserve it online.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="collection.html">Shop now</a>
+        <a class="btn btn-light btn-lg" href="account.html">Sign in / Register</a>
+      </div>
+
+      <div class="hero-marks">
+        <span>Bridal</span>
+        <span>Festive</span>
+        <span>Party Wear</span>
+        <span>Jewellery</span>
+      </div>
+    </div>
+
+    <!-- Credit line for the film running behind. -->
+    <div class="hero-credit">
+      <span class="hero-credit-line"></span>
+      <span>Laxmi Khamkar Yadav &middot; Owner</span>
+    </div>
+  </div>
+
+  <span class="hero-cue" aria-hidden="true"></span>
+</section>
+
+<!-- --------------------------------------------------------- store film -->
+<section class="film">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Inside the store</p>
+      <h2>Come and see it for yourself</h2>
+      <div class="orn"><i></i></div>
+    </div>
+    <!-- Wide stage for vertical footage: a blurred copy fills the width, the
+         sharp copy sits centred and uncropped. Both point at one file, so
+         the browser downloads it once. -->
+    <div class="stage" id="storeStage">
+      <video class="stage-bg" autoplay muted loop playsinline preload="metadata"
+             aria-hidden="true" onerror="this.remove()">
+        <source src="assets/video/store.mp4" type="video/mp4">
+      </video>
+      <video class="stage-fg" id="storeVideo" autoplay muted loop playsinline
+             preload="metadata" onerror="this.closest('.stage').classList.add('empty')">
+        <source src="assets/video/store.mp4" type="video/mp4">
+      </video>
+      <span class="stage-ph">Store film</span>
+      <button type="button" class="vid-sound" id="storeSound"
+              aria-label="Turn sound on" title="Turn sound on">🔇</button>
+      <figcaption class="stage-cap">Opening day · Kodoli</figcaption>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Bridal Lehengas</span><span>Reception Gowns</span><span>Paithani &amp; Silk</span>
+    <span>Kundan Jewellery</span><span>Sangeet Wear</span><span>Haldi Looks</span>
+    <span>Bridal Lehengas</span><span>Reception Gowns</span><span>Paithani &amp; Silk</span>
+    <span>Kundan Jewellery</span><span>Sangeet Wear</span><span>Haldi Looks</span>
+  </div>
+</div>
+
+<!-- -------------------------------------------------------------- band -->
+<!-- Real figures only — these come from the store's own Instagram and history.
+     Update them when they change; do not inflate them. -->
+<section class="band">
+  <div class="wrap band-grid">
+    <div><b>2024</b><span>Opened in Kodoli</span></div>
+    <div><b>1,900+</b><span>Following on Instagram</span></div>
+    <div><b>250+</b><span>Looks shared so far</span></div>
+    <div><b>4</b><span>Bridal · Festive · Party · Jewellery</span></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- story -->
+<section id="story">
+  <div class="wrap story-split">
+    <div class="story-copy">
+      <p class="eyebrow">The name</p>
+      <h2>Two names, one store</h2>
+
+      <!-- Only the names themselves stay in Marathi — the syllables each one
+           contributes are what the whole section exists to show. -->
+      <div class="namewheel" aria-label="Jayashree and Vaishali make Shreelee">
+        <div class="nw-src">
+          <span class="nw-full">जय<b>श्री</b></span>
+          <span class="nw-en">Jayashree</span>
+          <span class="nw-rel">Mother</span>
+        </div>
+        <span class="nw-plus" aria-hidden="true">+</span>
+        <div class="nw-src">
+          <span class="nw-full">वैशा<b>ली</b></span>
+          <span class="nw-en">Vaishali</span>
+          <span class="nw-rel">Mother-in-law</span>
+        </div>
+        <span class="nw-eq" aria-hidden="true">=</span>
+        <div class="nw-out">
+          <span class="nw-name">श्रीली</span>
+          <span class="nw-en">Shreelee</span>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top:28px">
+        The store takes its name from two women — <strong>जयश्री</strong>, the
+        owner's mother, and <strong>वैशाली</strong>, her mother-in-law. श्री from
+        one, ली from the other.
+      </p>
+      <p class="muted">
+        Every outfit that leaves here carries their names with it.
+      </p>
+    </div>
+
+    <!-- TODO: save the mehendi photograph as assets/img/story.jpg -->
+    <figure class="story-shot">
+      <img src="assets/img/story.jpg" alt="Jayashree and Vaishali, whose names the store carries"
+           onerror="this.closest('.story-shot').classList.add('empty');this.remove()">
+      <span class="ph">जयश्री &amp; वैशाली</span>
+      <figcaption>जयश्री आणि वैशाली</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ---------------------------------------------------------- occasions -->
+<section id="occasions">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Shop by occasion</p>
+      <h2>What are you dressing for?</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead">Every piece is available to rent by the day, cleaned and ready.</p>
+    </div>
+
+    <div class="grid cols-4">
+      <a class="occasion" href="collection.html?cat=bridal">
+        <img src="assets/img/cat-bridal.jpg" alt="" onerror="this.remove()">
+        <span class="ph">Bridal</span>
+        <figcaption>Bridal</figcaption>
+      </a>
+      <a class="occasion" href="collection.html?cat=festive">
+        <img src="assets/img/cat-festive.jpg" alt="" onerror="this.remove()">
+        <span class="ph">Festive</span>
+        <figcaption>Festive</figcaption>
+      </a>
+      <a class="occasion" href="collection.html?cat=party">
+        <img src="assets/img/cat-party.jpg" alt="" onerror="this.remove()">
+        <span class="ph">Party</span>
+        <figcaption>Party Wear</figcaption>
+      </a>
+      <a class="occasion" href="collection.html?cat=jewellery">
+        <img src="assets/img/cat-jewellery.jpg" alt="" onerror="this.remove()">
+        <span class="ph">Jewellery</span>
+        <figcaption>Jewellery</figcaption>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------- how -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">How it works</p>
+      <h2>Renting, in four steps</h2>
+      <div class="orn"><i></i></div>
+    </div>
+
+    <div class="grid cols-4 steps">
+      <div class="step">
+        <h3>Pick your dates</h3>
+        <p>Tell us when your function is. We show only what's free on those days.</p>
+      </div>
+      <div class="step">
+        <h3>Reserve online</h3>
+        <p>Book the piece with your name and number. We confirm on WhatsApp.</p>
+      </div>
+      <div class="step">
+        <h3>Try &amp; collect</h3>
+        <p>Come to the store for a fitting, pay the rent and refundable deposit.</p>
+      </div>
+      <div class="step">
+        <h3>Return</h3>
+        <p>Bring it back on the return date. Cleaning is on us; deposit comes back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------------------------------------- lookbook -->
+<section class="tint" id="lookbook">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Lookbook</p>
+      <h2>Pieces from the rail</h2>
+      <div class="orn"><i></i></div>
+      <p class="lead">A glimpse of what's in store. The full collection is inside.</p>
+    </div>
+
+    <!-- Mixed grid: two stills and two films. Shapes are declared per tile
+         so nothing is cropped into a sliver. -->
+    <div class="look-grid">
+      <figure class="look tall">
+        <img src="assets/img/shot-1.jpg" alt="A piece from the collection" loading="lazy"
+             onerror="this.closest('.look').classList.add('empty');this.remove()">
+        <span class="ph">Photo</span>
+      </figure>
+
+      <figure class="look tall" data-video="assets/video/jewellery.mp4">
+        <span class="ph">Jewellery film</span>
+        <figcaption>Jewellery</figcaption>
+      </figure>
+
+      <figure class="look wide">
+        <img src="assets/img/shot-2.jpg" alt="Inside the store" loading="lazy"
+             onerror="this.closest('.look').classList.add('empty');this.remove()">
+        <span class="ph">Photo</span>
+      </figure>
+
+      <figure class="look tall" data-video="assets/video/clip-b.mp4">
+        <span class="ph">Film</span>
+      </figure>
+    </div>
+
+    <p class="center" style="margin-top:36px">
+      <a class="btn btn-primary" href="collection.html">See the full collection</a>
+    </p>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------- journey -->
+<section id="journey">
+  <div class="wrap journey-split">
+    <div>
+      <p class="eyebrow">Our journey</p>
+      <h2>One year on, we grew</h2>
+      <p class="lead">
+        श्रीली opened with a small rail of outfits and a lot of hope. Within a
+        year the collection had outgrown the space — so we built more of it.
+      </p>
+
+      <ul class="milestones">
+        <li>
+          <!-- TODO: put the real opening month here -->
+          <span class="ms-when">Year one</span>
+          <h3>The store opens</h3>
+          <p>A handful of bridal and festive pieces, and word of mouth across Kodoli.</p>
+        </li>
+        <li>
+          <span class="ms-when">Within a year</span>
+          <h3>Expansion &amp; पूजा</h3>
+          <p>
+            More floor space, more rails, a proper trial area — blessed with a
+            पूजा before the doors reopened.
+          </p>
+        </li>
+        <li>
+          <span class="ms-when">Today</span>
+          <h3>Bridal, festive, party &amp; jewellery</h3>
+          <p>A full collection on rent, now bookable online for your dates.</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- The expansion film. Heaviest clip on the site, so it loads only
+         when someone scrolls this far. -->
+    <div class="vid-slot" data-video="assets/video/expansion.mp4">
+      <span class="ph">Expansion &amp; पूजा</span>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- owner -->
+<section class="tint" id="owner">
+  <div class="wrap owner-split">
+    <!-- The owners' film. assets/img/owner.jpg is used as its poster frame,
+         so her portrait is what shows while the video loads. -->
+    <div class="vid-slot" data-video="assets/video/owners.mp4"
+         data-poster="assets/img/owner.jpg">
+      <span class="ph">Laxmi &amp; family</span>
+    </div>
+
+    <div class="owner-copy">
+      <p class="eyebrow">Meet the owner</p>
+      <h2>Laxmi Khamkar Yadav</h2>
+      <p class="lead">
+        श्रीली Rental Store is run personally by Laxmi and her husband — every
+        piece is chosen, fitted and maintained by them. If you are not sure what
+        suits your occasion, call and ask. That advice is free, and it is
+        usually the difference between a good outfit and the right one.
+      </p>
+      <div class="owner-contact">
+        <a class="btn btn-primary" href="tel:+919168754478">Call 91687 54478</a>
+        <a class="btn btn-ghost" href="https://wa.me/919168754478">WhatsApp</a>
+      </div>
+      <p class="muted" style="margin-top:20px">
+        Kodoli, Satara · <a href="https://www.instagram.com/shreelee_rental/"
+        target="_blank" rel="noopener">@shreelee_rental</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------- enquiry -->
+<section id="enquire">
+  <div class="wrap enquire-split">
+    <div>
+      <p class="eyebrow">Ask us</p>
+      <h2>Not sure what suits your occasion?</h2>
+      <div class="orn" style="margin-left:0"><i></i></div>
+      <p class="lead">
+        Tell us the function, the date and roughly what you have in mind.
+        Laxmi will reply on WhatsApp with what would work — and what's free
+        on your dates.
+      </p>
+      <p class="muted">
+        No account needed for this. Prefer to talk?
+        <a href="tel:+919168754478">Call 91687 54478</a>.
+      </p>
+    </div>
+
+    <form class="enquire-box" id="enquireForm">
+      <div class="field">
+        <label for="eqName">Your name *</label>
+        <input id="eqName" type="text" autocomplete="name" placeholder="Your name" required>
+      </div>
+
+      <div class="field">
+        <label for="eqPhone">Mobile number *</label>
+        <div class="phone-field">
+          <span class="cc">🇮🇳 +91</span>
+          <input id="eqPhone" type="tel" inputmode="numeric" autocomplete="tel-national"
+                 maxlength="10" placeholder="9876543210" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="eqMsg">What are you looking for? *</label>
+        <textarea id="eqMsg" rows="4" required
+          placeholder="Reception on 12 Dec, looking for a maroon lehenga, size M…"></textarea>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="eqBtn" type="submit">Send enquiry</button>
+      <div class="msg" id="eqMsgBox"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- visit -->
+<section class="tint" id="visit">
+  <div class="wrap grid cols-2" style="align-items:center;gap:48px">
+    <div>
+      <p class="eyebrow">Visit the store</p>
+      <h2>Come and try it on</h2>
+      <p class="lead">
+        Photos help, but the fit is what matters. Drop in, try what you've shortlisted,
+        and we'll hold it for your dates.
+      </p>
+      <p style="margin-top:22px">
+        <strong>श्रीली Rental Store</strong><br>
+        Kodoli, Satara, Maharashtra<br>
+        <!-- TODO: full address line -->
+      </p>
+      <p>
+        <a href="tel:+919168754478"><strong>91687 54478</strong></a> ·
+        <a href="https://wa.me/919168754478">WhatsApp</a> ·
+        <a href="https://www.instagram.com/shreelee_rental/" target="_blank" rel="noopener">@shreelee_rental</a>
+      </p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn btn-primary" href="https://wa.me/919168754478">Message on WhatsApp</a>
+        <a class="btn btn-ghost" href="https://maps.app.goo.gl/j7tXfrdaB9cCsQw49" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+    <!-- The shop reel. Vertical footage in a vertical frame — no cropping. -->
+    <div class="vid-slot" data-video="assets/video/shop-reel.mp4">
+      <span class="ph">Shop reel</span>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">श्रीली</div>
+        <p style="margin-top:8px">Rental Store · Kodoli, Satara</p>
+        <p class="muted" style="color:rgba(255,255,255,.55)">
+          Bridal, festive and party wear on rent. Owner — Laxmi Khamkar Yadav.
+        </p>
+      </div>
+      <div>
+        <h3>Collection</h3>
+        <a href="collection.html?cat=bridal">Bridal</a>
+        <a href="collection.html?cat=festive">Festive</a>
+        <a href="collection.html?cat=party">Party Wear</a>
+        <a href="collection.html?cat=jewellery">Jewellery</a>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <a href="#story">Our story</a>
+        <a href="#how">How it works</a>
+        <a href="#enquire">Ask us</a>
+      <a href="#visit">Visit us</a>
+        <a href="admin.html">Staff login</a>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <a href="tel:+919168754478">91687 54478</a>
+        <a href="https://wa.me/919168754478">WhatsApp</a>
+        <a href="https://www.instagram.com/shreelee_rental/" target="_blank" rel="noopener">@shreelee_rental</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> श्रीली Rental Store</span>
+      <span>Kodoli, Satara</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/inline-video.js"></script>
+<script src="assets/js/reveal.js"></script>
+<script src="assets/js/enquire.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My bag — श्रीली Rental Store</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4a1033">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body class="shop">
+
+<header class="site-header scrolled">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" id="brandMark">
+        <img src="assets/img/logo.png" alt="श्रीली" style="width:100%;height:100%;object-fit:cover"
+             onerror="this.remove();document.getElementById('brandMark').textContent='श्री';">
+      </span>
+      <span class="txt"><strong>श्रीली</strong><span>Rental Store</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="siteNav">
+      <a href="collection.html">Shop now</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#visit">Visit us</a>
+      <span id="navAccount"></span>
+    </nav>
+  </div>
+</header>
+
+<div class="gate hide" id="gateView">
+  <div class="lock">🔒</div>
+  <h2>Sign in to see your bag</h2>
+  <a class="btn btn-primary" href="account.html?next=cart.html">Sign in or register</a>
+</div>
+
+<div id="bagView" class="hide">
+  <div class="wrap page-head">
+    <p class="crumbs"><a href="index.html">Home</a> · <a href="collection.html">Collection</a> · My bag</p>
+    <h1>My bag</h1>
+  </div>
+
+  <div class="wrap bag-layout">
+    <div>
+      <div id="bagLines"></div>
+
+      <div class="empty-state hide" id="bagEmpty">
+        <div class="big">👗</div>
+        <h3>Your bag is empty</h3>
+        <p class="muted">Add a piece and the dates you need it for.</p>
+        <a class="btn btn-primary" href="collection.html" style="margin-top:14px">Shop the collection</a>
+      </div>
+
+      <!-- ------------------------------------------------- past bookings -->
+      <h2 style="margin-top:46px">My bookings</h2>
+      <p class="muted">Everything you have requested, with where it has got to.</p>
+      <div id="myBookings" style="margin-top:16px"></div>
+    </div>
+
+    <!-- ------------------------------------------------------- summary -->
+    <aside>
+      <div class="summary" id="summaryBox">
+        <h3 style="margin-bottom:10px">Summary</h3>
+        <div class="line"><span>Pieces</span><b id="sCount">0</b></div>
+        <div class="line"><span>Rent</span><b id="sRent">₹0</b></div>
+        <div class="line"><span>Refundable deposit</span><b id="sDep">₹0</b></div>
+        <div class="line total"><span>Pay at the store</span><span id="sTotal">₹0</span></div>
+
+        <label for="notes" style="display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);font-weight:700;margin:16px 0 5px">
+          Anything we should know?
+        </label>
+        <textarea id="notes" rows="3" placeholder="Function date, alterations, timing…"
+                  style="width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;font:inherit"></textarea>
+
+        <button class="btn btn-primary btn-block" id="checkoutBtn">Request these dates</button>
+        <div class="msg" id="coMsg"></div>
+
+        <p class="fine">
+          Nothing is charged online. The store confirms on WhatsApp, then you
+          pay the rent and deposit when you collect.
+        </p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------- done -->
+<div class="wrap hide" id="doneView" style="padding:6vh 20px 10vh">
+  <div class="gate" style="margin:0 auto">
+    <div class="lock">🎉</div>
+    <h2>Request sent</h2>
+    <p class="lead" style="margin-inline:auto" id="doneMsg"></p>
+    <div id="doneList" style="text-align:left;margin:22px 0"></div>
+    <a class="btn btn-primary" href="collection.html">Keep shopping</a>
+    <p class="muted" style="margin-top:16px">
+      <a href="https://wa.me/919168754478">Message the store on WhatsApp</a>
+    </p>
+  </div>
+</div>
+
+<div class="wrap" id="loadingView" style="padding:50px 0">
+  <div class="skeleton" style="height:120px;margin-bottom:12px"></div>
+  <div class="skeleton" style="height:120px"></div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/site-nav.js"></script>
+<script src="assets/js/cart.js"></script>
+</body>
+</html>

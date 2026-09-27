@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — श्रीली Rental Store</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4a1033">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body class="shop">
+
+<header class="site-header scrolled">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" id="brandMark">
+        <img src="assets/img/logo.png" alt="श्रीली" style="width:100%;height:100%;object-fit:cover"
+             onerror="this.remove();document.getElementById('brandMark').textContent='श्री';">
+      </span>
+      <span class="txt"><strong>श्रीली</strong><span>Rental Store</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="siteNav">
+      <a href="collection.html">Shop now</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#visit">Visit us</a>
+      <span id="navAccount"></span>
+    </nav>
+  </div>
+</header>
+
+<!-- ------------------------------------------------------------ signed in -->
+<div class="hide" id="profileView">
+
+  <!-- identity banner -->
+  <div class="acct-hero">
+    <div class="wrap acct-hero-in">
+      <div class="acct-avatar" id="pInitials">—</div>
+      <div class="acct-id">
+        <p class="eyebrow" style="color:#f0c8d8">My account</p>
+        <h1 id="pName">—</h1>
+        <p id="pEmail"></p>
+      </div>
+      <button class="btn btn-light btn-sm" id="signOutBtn">Sign out</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- at-a-glance -->
+    <div class="acct-stats">
+      <a class="acct-stat" href="cart.html">
+        <span class="k">In my bag</span><span class="v" id="pBag">0</span>
+        <span class="s">pieces waiting</span>
+      </a>
+      <div class="acct-stat">
+        <span class="k">Requested</span><span class="v" id="pPending">0</span>
+        <span class="s">awaiting the store</span>
+      </div>
+      <div class="acct-stat">
+        <span class="k">Confirmed</span><span class="v" id="pConfirmed">0</span>
+        <span class="s">ready to collect</span>
+      </div>
+      <div class="acct-stat">
+        <span class="k">Completed</span><span class="v" id="pDone">0</span>
+        <span class="s">rentals so far</span>
+      </div>
+    </div>
+
+    <div class="acct-tabs" id="acctTabs">
+      <button data-p="bag" class="on">My bag</button>
+      <button data-p="history">Booking history</button>
+      <button data-p="details">My details</button>
+    </div>
+
+    <!-- ------------------------------------------------------- my bag -->
+    <section id="pane-bag">
+      <div id="acctBag"></div>
+      <div class="empty-state hide" id="acctBagEmpty">
+        <div class="big">👗</div>
+        <h3>Your bag is empty</h3>
+        <p class="muted">Add a piece and the dates you need it for.</p>
+        <a class="btn btn-primary" href="collection.html" style="margin-top:14px">Shop the collection</a>
+      </div>
+      <p class="hide" id="acctBagCta" style="margin-top:18px">
+        <a class="btn btn-primary" href="cart.html">Go to bag &amp; request dates</a>
+      </p>
+    </section>
+
+    <!-- --------------------------------------------------- my history -->
+    <section id="pane-history" class="hide">
+      <div class="acct-filter" id="histFilter">
+        <button data-s="" class="on">All</button>
+        <button data-s="REQUESTED">Requested</button>
+        <button data-s="CONFIRMED">Confirmed</button>
+        <button data-s="PICKED_UP">With me</button>
+        <button data-s="RETURNED">Returned</button>
+      </div>
+      <div id="acctHistory"></div>
+      <div class="empty-state hide" id="acctHistEmpty">
+        <div class="big">🧾</div>
+        <h3>No bookings yet</h3>
+        <p class="muted">Anything you request will appear here with its status.</p>
+        <a class="btn btn-primary" href="collection.html" style="margin-top:14px">Start shopping</a>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------- my details -->
+    <section id="pane-details" class="hide">
+      <div class="acct-card">
+        <h3 style="margin-bottom:4px">My details</h3>
+        <p class="muted" style="margin-bottom:18px">
+          To change any of these, message the store — we keep them in step with
+          your booking records.
+        </p>
+        <div class="detail-row"><span>Name</span><b id="dName"></b></div>
+        <div class="detail-row"><span>Email</span><b id="dEmail"></b></div>
+        <div class="detail-row"><span>Mobile</span><b id="dPhone"></b></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn btn-primary" href="https://wa.me/919168754478" target="_blank" rel="noopener">Message the store</a>
+          <a class="btn btn-ghost" href="collection.html">Shop the collection</a>
+        </div>
+      </div>
+    </section>
+
+    <p class="muted" style="text-align:center;padding:36px 0">
+      <a href="index.html">← Back to the website</a>
+    </p>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------ signed out -->
+<div class="auth-shell hide" id="authView">
+  <div class="auth-box">
+    <div class="note-why hide" id="whyNote"></div>
+
+    <div class="auth-switch" role="tablist">
+      <button id="tabIn" class="on" role="tab">Sign in</button>
+      <button id="tabUp" role="tab">Create account</button>
+    </div>
+
+    <!-- sign in ------------------------------------------------------- -->
+    <form id="formIn" autocomplete="on">
+      <h1 style="font-size:1.6rem">Welcome back</h1>
+      <p class="muted">Sign in to see the collection and your bag.</p>
+
+      <div class="field">
+        <label for="inEmail">Email</label>
+        <input id="inEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="field">
+        <label for="inPass">Password</label>
+        <input id="inPass" type="password" autocomplete="current-password" placeholder="Your password" required>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="inBtn" type="submit">Sign in</button>
+      <div class="msg err" id="inMsg"></div>
+    </form>
+
+    <!-- register ------------------------------------------------------ -->
+    <form id="formUp" class="hide" autocomplete="on">
+      <h1 style="font-size:1.6rem">Create your account</h1>
+      <p class="muted">Takes a minute. Your bag is saved against it.</p>
+
+      <div class="field">
+        <label for="upName">Full name *</label>
+        <input id="upName" type="text" autocomplete="name" placeholder="Your name" required>
+      </div>
+
+      <div class="field">
+        <label for="upEmail">Email *</label>
+        <input id="upEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="field">
+        <label for="upPhone">Mobile number *</label>
+        <!-- +91 is fixed. The store is in Kodoli and confirms on WhatsApp,
+             so an Indian mobile is the only number that is any use. -->
+        <div class="phone-field">
+          <span class="cc">🇮🇳 +91</span>
+          <input id="upPhone" type="tel" inputmode="numeric" autocomplete="tel-national"
+                 maxlength="10" pattern="[6-9][0-9]{9}" placeholder="9876543210" required>
+        </div>
+        <p class="hint">10 digits, starting 6–9. We confirm bookings on WhatsApp.</p>
+      </div>
+
+      <div class="field">
+        <label for="upPass">Password *</label>
+        <input id="upPass" type="password" autocomplete="new-password"
+               placeholder="At least 6 characters" required>
+      </div>
+
+      <div class="field">
+        <label for="upAddress">Address <span class="opt">(optional)</span></label>
+        <input id="upAddress" type="text" autocomplete="street-address" placeholder="Village / town">
+      </div>
+
+      <button class="btn btn-primary btn-block" id="upBtn" type="submit">Create account</button>
+      <div class="msg err" id="upMsg"></div>
+    </form>
+
+    <p class="muted" style="text-align:center;margin-top:20px">
+      <a href="index.html">← Back to the website</a>
+    </p>
+  </div>
+</div>
+
+<div class="auth-shell" id="loadingView">
+  <div class="auth-box" style="text-align:center">
+    <span class="spin"></span> <span class="muted">One moment…</span>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/site-nav.js"></script>
+<script src="assets/js/account.js"></script>
+</body>
+</html>

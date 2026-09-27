@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The collection — श्रीली Rental Store</title>
+<meta name="description" content="Bridal, festive and party wear on rent in Kodoli, Satara. Check availability for your dates.">
+<meta name="theme-color" content="#4a1033">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body class="shop">
+
+<header class="site-header scrolled">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" id="brandMark">
+        <img src="assets/img/logo.png" alt="श्रीली" style="width:100%;height:100%;object-fit:cover"
+             onerror="this.remove();document.getElementById('brandMark').textContent='श्री';">
+      </span>
+      <span class="txt"><strong>श्रीली</strong><span>Rental Store</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="siteNav">
+      <a href="collection.html">Shop now</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#visit">Visit us</a>
+      <span id="navAccount"></span>
+    </nav>
+  </div>
+</header>
+
+<!-- shown when nobody is signed in -->
+<div class="gate hide" id="gateView">
+  <div class="lock">🔒</div>
+  <h2>The collection is for members</h2>
+  <p class="lead" style="margin-inline:auto">
+    Create a free account to browse every piece, check your dates and
+    reserve online. It takes a minute.
+  </p>
+  <a class="btn btn-primary" href="account.html?next=collection.html">Sign in or register</a>
+  <p class="muted" style="margin-top:18px">
+    Rather just ask? <a href="https://wa.me/919168754478">WhatsApp the store</a>
+  </p>
+</div>
+
+<div id="shopView" class="hide">
+  <div class="wrap page-head">
+    <p class="crumbs"><a href="index.html">Home</a> · Collection</p>
+    <h1 id="pageTitle">The collection</h1>
+    <p class="lead" id="pageSub">Pick your dates and we'll show only what's free.</p>
+  </div>
+
+  <div class="shop-bar">
+    <div class="wrap">
+      <div>
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="lehenga, maroon, kundan…">
+      </div>
+      <div>
+        <label for="cat">Occasion</label>
+        <select id="cat"><option value="">All</option></select>
+      </div>
+      <div>
+        <label for="sub">Type</label>
+        <select id="sub"><option value="">All</option></select>
+      </div>
+      <div>
+        <label for="from">From</label>
+        <input id="from" type="date">
+      </div>
+      <div>
+        <label for="to">To</label>
+        <input id="to" type="date">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="chips" id="quickCats"></div>
+
+    <p class="muted" id="resultCount" style="margin:16px 0 6px"></p>
+    <div class="catalog" id="grid"></div>
+
+    <div class="empty-state hide" id="emptyState">
+      <div class="big">🤍</div>
+      <h3>Nothing free on those dates</h3>
+      <p class="muted">Try widening the dates, or ask us — we may have something similar.</p>
+      <a class="btn btn-ghost" href="https://wa.me/919168754478" style="margin-top:14px">Ask on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="loadingView" style="padding:40px 0">
+  <div class="catalog">
+    <div class="skeleton sk-card"></div><div class="skeleton sk-card"></div>
+    <div class="skeleton sk-card"></div><div class="skeleton sk-card"></div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/site-nav.js"></script>
+<script src="assets/js/collection.js"></script>
+</body>
+</html>

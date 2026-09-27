@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piece — श्रीली Rental Store</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4a1033">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body class="shop">
+
+<header class="site-header scrolled">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" id="brandMark">
+        <img src="assets/img/logo.png" alt="श्रीली" style="width:100%;height:100%;object-fit:cover"
+             onerror="this.remove();document.getElementById('brandMark').textContent='श्री';">
+      </span>
+      <span class="txt"><strong>श्रीली</strong><span>Rental Store</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span></button>
+    <nav class="site-nav" id="siteNav">
+      <a href="collection.html">Shop now</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#visit">Visit us</a>
+      <span id="navAccount"></span>
+    </nav>
+  </div>
+</header>
+
+<div class="gate hide" id="gateView">
+  <div class="lock">🔒</div>
+  <h2>Sign in to see this piece</h2>
+  <p class="lead" style="margin-inline:auto">Free account, takes a minute.</p>
+  <a class="btn btn-primary" id="gateBtn" href="account.html">Sign in or register</a>
+</div>
+
+<div id="itemView" class="hide">
+  <div class="wrap">
+    <p class="crumbs" style="padding-top:26px">
+      <a href="index.html">Home</a> · <a href="collection.html">Collection</a> ·
+      <span id="crumbCat"></span>
+    </p>
+
+    <div class="item-layout">
+      <!-- gallery -->
+      <div class="gallery">
+        <div class="gallery-main" id="galMain"><span class="ph">श्री</span></div>
+        <div class="gallery-strip" id="galStrip"></div>
+      </div>
+
+      <!-- details -->
+      <div>
+        <h1 class="item-title" id="iName">—</h1>
+        <div class="item-meta" id="iMeta"></div>
+
+        <div class="price-row" id="iPrice"></div>
+        <p class="price-note" id="iDeposit"></p>
+
+        <p id="iDesc" class="lead"></p>
+
+        <div class="avail unknown" id="iAvail">Pick your dates to check</div>
+
+        <div class="book-box">
+          <div class="book-dates">
+            <div><label for="bFrom">Pickup date</label><input id="bFrom" type="date"></div>
+            <div><label for="bTo">Return date</label><input id="bTo" type="date"></div>
+          </div>
+
+          <div class="book-total" id="bTotal" style="display:none">
+            <span id="bDays"></span><b id="bAmount"></b>
+          </div>
+
+          <button class="btn btn-primary btn-block" id="addBtn" style="margin-top:16px">
+            Add to bag
+          </button>
+          <div class="msg" id="bMsg"></div>
+
+          <p class="muted" style="font-size:.82rem;margin:14px 0 0">
+            Adding to the bag holds nothing yet. You confirm at checkout, and
+            the store approves it — usually the same day.
+          </p>
+        </div>
+
+        <p class="muted" style="margin-top:20px">
+          Questions about fit or fabric?
+          <a href="https://wa.me/919168754478" target="_blank" rel="noopener">Ask on WhatsApp</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------- reviews -->
+    <section class="reviews" id="reviewsBlock">
+      <div class="rev-head">
+        <div>
+          <h2>What customers said</h2>
+          <p class="muted" id="revVerified">Only people who have rented this piece can review it.</p>
+        </div>
+        <div class="rev-score hide" id="revScore">
+          <span class="rev-avg" id="revAvg">0</span>
+          <span class="rev-stars" id="revStars"></span>
+          <span class="muted" id="revCount"></span>
+        </div>
+      </div>
+
+      <!-- write / edit, shown only to someone who has rented it -->
+      <div class="rev-write hide" id="revWrite">
+        <h3 id="revWriteTitle">Rate this piece</h3>
+        <div class="star-pick" id="starPick" role="radiogroup" aria-label="Rating">
+          <button type="button" data-v="1" aria-label="1 star">★</button>
+          <button type="button" data-v="2" aria-label="2 stars">★</button>
+          <button type="button" data-v="3" aria-label="3 stars">★</button>
+          <button type="button" data-v="4" aria-label="4 stars">★</button>
+          <button type="button" data-v="5" aria-label="5 stars">★</button>
+        </div>
+
+        <textarea id="revComment" rows="3"
+          placeholder="How was the fit, the fabric, the condition? Anything the next person should know."></textarea>
+
+        <label class="drop drop-sm" id="revDrop" for="revFiles">
+          <input type="file" id="revFiles" accept="image/*" multiple>
+          <strong>Add photos</strong>
+          <span class="muted"> — how it looked on the day (up to 4)</span>
+        </label>
+        <div class="rev-shots" id="revShots"></div>
+
+        <button class="btn btn-primary" id="revSave">Post review</button>
+        <div class="msg" id="revMsg"></div>
+      </div>
+
+      <div id="revList"></div>
+      <p class="muted hide" id="revNone">No reviews yet — be the first once you've rented it.</p>
+    </section>
+  </div>
+
+  <!-- phone-only sticky action -->
+  <div class="sticky-cta" id="stickyCta">
+    <span class="price" id="ctaPrice"></span>
+    <button class="btn btn-primary" id="ctaBtn">Add to bag</button>
+  </div>
+</div>
+
+<div class="wrap" id="loadingView" style="padding:50px 0">
+  <div class="item-layout">
+    <div class="skeleton" style="aspect-ratio:3/4"></div>
+    <div>
+      <div class="skeleton" style="height:42px;margin-bottom:14px"></div>
+      <div class="skeleton" style="height:20px;width:60%;margin-bottom:26px"></div>
+      <div class="skeleton" style="height:180px"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/site-nav.js"></script>
+<script src="assets/js/reviews.js"></script>
+<script src="assets/js/item.js"></script>
+</body>
+</html>

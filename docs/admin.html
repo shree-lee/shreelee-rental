@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff panel — श्रीली Rental Store</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#4a1033">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin">
+
+<!-- Held up while a saved session is checked. -->
+<div id="bootView">
+  <div class="boot">
+    <div class="mark" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(145deg,#c2185b,#4a1033);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:1.5rem">श्री</div>
+    <div class="boot-bar"><span></span></div>
+    <p class="muted">Opening the panel…</p>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------- login -->
+<div id="loginView" class="hide">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="mark">श्री</div>
+      <h1>Staff panel</h1>
+      <p class="sub">श्रीली Rental Store</p>
+
+      <label for="userId">User id</label>
+      <input id="userId" type="text" autocomplete="username" autocapitalize="none"
+             spellcheck="false" placeholder="laxmi-yadav">
+
+      <label for="password">Password</label>
+      <div class="pw-wrap">
+        <input id="password" type="password" autocomplete="current-password" placeholder="Password">
+        <button type="button" id="pwToggle" class="pw-toggle" aria-pressed="false"
+                aria-label="Show password" title="Show password">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"/>
+            <circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path class="eye-slash" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" d="M4 20 20 4" opacity="0"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="loginBtn" style="margin-top:22px">Sign in</button>
+      <div class="msg err" id="loginMsg"></div>
+      <p class="muted" style="text-align:center;margin-top:18px">
+        <a href="index.html">← Back to the website</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------------------------------- app -->
+<div id="appView" class="hide">
+  <div class="app-bar">
+    <div class="wrap">
+      <span class="logo">श्रीली<small>Staff panel</small></span>
+      <span class="who"><b id="whoName"></b><span id="whoRole"></span></span>
+      <button class="btn btn-light btn-sm" id="logoutBtn">Sign out</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="tabs" id="tabs">
+      <button data-tab="dash" class="on">Dashboard</button>
+      <button data-tab="approvals">Approvals <span class="count hide" id="cntApprovals">0</span></button>
+      <button data-tab="items">Collection</button>
+      <button data-tab="bookings">Bookings <span class="count hide" id="cntBookings">0</span></button>
+      <button data-tab="enquiries">Enquiries <span class="count hide" id="cntEnq">0</span></button>
+      <button data-tab="categories">Categories</button>
+      <button data-tab="reports">Reports</button>
+    </div>
+
+    <!-- ===================================================== dashboard -->
+    <section id="panel-dash">
+      <div class="stat-row" id="dashStats"></div>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Waiting for you</h2>
+          <button class="btn btn-ghost btn-sm" id="dashRefresh">Refresh</button>
+        </div>
+        <div class="tbl-wrap"><table id="dashTable"></table></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== approvals -->
+    <section id="panel-approvals" class="hide">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Waiting for approval</h2>
+          <button class="btn btn-ghost btn-sm" id="apRefresh">Refresh</button>
+        </div>
+        <p class="muted">
+          Every request a customer sends lands here. Approving blocks the dates;
+          declining frees them immediately.
+        </p>
+        <div class="tbl-wrap"><table id="apTable"></table></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= items -->
+    <section id="panel-items" class="hide">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Collection</h2>
+          <button class="btn btn-primary btn-sm" id="addItemBtn">+ Add piece</button>
+        </div>
+        <div class="filters">
+          <div><label for="itemQ">Search</label><input id="itemQ" placeholder="name, code, colour…"></div>
+          <div><label for="itemCat">Category</label><select id="itemCat"></select></div>
+          <div><label for="itemStatus">Status</label>
+            <select id="itemStatus">
+              <option value="">All</option><option>ACTIVE</option>
+              <option>HIDDEN</option><option>RETIRED</option>
+            </select>
+          </div>
+          <button class="btn btn-ghost" id="itemClear">Clear</button>
+        </div>
+        <div class="tbl-wrap"><table id="itemTable"></table></div>
+        <div class="list-meta"><span id="itemCount">—</span></div>
+      </div>
+    </section>
+
+    <!-- ====================================================== bookings -->
+    <section id="panel-bookings" class="hide">
+      <div class="panel">
+        <div class="panel-head"><h2>Bookings</h2></div>
+        <div class="filters">
+          <div><label for="bkQ">Search</label><input id="bkQ" placeholder="ref, customer, phone, piece…"></div>
+          <div><label for="bkStatus">Status</label>
+            <select id="bkStatus">
+              <option value="">All</option><option>REQUESTED</option><option>CONFIRMED</option>
+              <option>PICKED_UP</option><option>RETURNED</option>
+              <option>CANCELLED</option><option>NO_SHOW</option>
+            </select>
+          </div>
+          <div></div>
+          <button class="btn btn-ghost" id="bkClear">Clear</button>
+        </div>
+        <div class="tbl-wrap"><table id="bkTable"></table></div>
+        <div class="list-meta">
+          <span id="bkCount">—</span>
+          <span style="margin-left:auto"><button class="btn btn-ghost btn-sm" id="bkCsv">Download CSV</button></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== enquiries -->
+    <section id="panel-enquiries" class="hide">
+      <div class="panel">
+        <div class="panel-head"><h2>Enquiries</h2></div>
+        <div class="filters">
+          <div><label for="eqQ">Search</label><input id="eqQ" placeholder="name, phone, message…"></div>
+          <div><label for="eqStatus">Status</label>
+            <select id="eqStatus">
+              <option value="">All</option><option>NEW</option>
+              <option>ANSWERED</option><option>CLOSED</option>
+            </select>
+          </div>
+          <div></div>
+          <button class="btn btn-ghost" id="eqClear">Clear</button>
+        </div>
+        <div class="tbl-wrap"><table id="eqTable"></table></div>
+        <div class="list-meta"><span id="eqCount">—</span></div>
+      </div>
+    </section>
+
+    <!-- ==================================================== categories -->
+    <section id="panel-categories" class="hide">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Categories &amp; types</h2>
+          <button class="btn btn-primary btn-sm" id="addCatBtn">+ Add</button>
+        </div>
+        <p class="muted">
+          A row with no parent is a main category. Give it a parent and it becomes
+          a type under it — Bridal → Lehenga. Sequence sets the order on the site.
+        </p>
+        <div class="tbl-wrap"><table id="catTable"></table></div>
+      </div>
+    </section>
+
+    <!-- ======================================================= reports -->
+    <section id="panel-reports" class="hide">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Reports</h2>
+          <button class="btn btn-ghost btn-sm" id="repPrint">Print</button>
+        </div>
+        <div class="filters">
+          <div><label for="repFrom">From</label><input id="repFrom" type="date"></div>
+          <div><label for="repTo">To</label><input id="repTo" type="date"></div>
+          <div><label for="repQuick">Quick</label>
+            <select id="repQuick">
+              <option value="">Choose…</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 3 months</option>
+              <option value="365">Last 12 months</option>
+              <option value="all">Everything</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="repRun">Run</button>
+        </div>
+        <div class="stat-row" id="repStats" style="margin-top:18px"></div>
+      </div>
+
+      <div class="rep-grid" style="margin-top:18px">
+        <div class="panel" style="margin:0">
+          <h2>Earned by month</h2>
+          <div class="barlist" id="repMonths"></div>
+        </div>
+        <div class="panel" style="margin:0">
+          <h2>Earned by category</h2>
+          <div class="barlist" id="repCats"></div>
+        </div>
+        <div class="panel" style="margin:0">
+          <h2>Best earning pieces</h2>
+          <div class="tbl-wrap"><table id="repTop"></table></div>
+        </div>
+        <div class="panel" style="margin:0">
+          <h2>Never rented out</h2>
+          <p class="muted">Pieces on the rail that have never gone out — the ones costing money.</p>
+          <div class="tbl-wrap"><table id="repIdle"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="muted" style="text-align:center;padding:32px 0">
+      <a href="index.html">← Back to the website</a>
+    </p>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------- item modal -->
+<div class="modal" id="itemModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 id="itemModalTitle">Add a piece</h3>
+      <button class="x-btn" data-close>✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-grid">
+        <div class="full"><label for="fName">Name *</label>
+          <input id="fName" placeholder="Maroon bridal lehenga"></div>
+
+        <div><label for="fCategory">Category *</label><select id="fCategory"></select></div>
+        <div><label for="fSubcategory">Type</label><select id="fSubcategory"></select></div>
+        <div><label for="fCode">Code</label><input id="fCode" placeholder="auto"></div>
+
+        <div><label for="fSize">Size</label><input id="fSize" placeholder="M / Free"></div>
+        <div><label for="fColour">Colour</label><input id="fColour" placeholder="Maroon"></div>
+        <div><label for="fQuantity">How many of this piece</label>
+          <input id="fQuantity" type="number" min="1" step="1" value="1"></div>
+
+        <div><label for="fRent">Rent per day (₹) *</label><input id="fRent" type="number" min="0" step="50"></div>
+        <div><label for="fDeposit">Deposit (₹)</label><input id="fDeposit" type="number" min="0" step="100"></div>
+        <div><label for="fSequence">Sort order</label><input id="fSequence" type="number" min="0" step="1" placeholder="999"></div>
+
+        <div><label for="fDiscount">Discount %</label><input id="fDiscount" type="number" min="0" max="90" step="5" value="0"></div>
+        <div><label for="fOfferUntil">Offer valid till</label><input id="fOfferUntil" type="date"></div>
+        <div><label for="fStatus">Status</label>
+          <select id="fStatus"><option>ACTIVE</option><option>HIDDEN</option><option>RETIRED</option></select></div>
+
+        <div class="full"><label for="fOfferNote">Offer note</label>
+          <input id="fOfferNote" placeholder="Festive offer — 20% off till Diwali"></div>
+        <div class="full"><label for="fDescription">Description</label>
+          <textarea id="fDescription" placeholder="Fabric, work, what it suits…"></textarea></div>
+
+        <div class="full">
+          <label>Photos &amp; video — the first one is the cover</label>
+          <label class="drop" id="dropZone" for="fileInput">
+            <input type="file" id="fileInput" accept="image/*,video/mp4,video/webm,video/quicktime" multiple>
+            <strong>Tap to choose photos or video</strong><br>
+            <span class="muted">or drag them here · photos resized automatically · video under 12MB</span>
+          </label>
+
+          <!-- Videos are added by path, not uploaded. A phone clip is 5-10MB;
+               base64'd through Apps Script it would be a third bigger again
+               and slow to the point of timing out. Put the file in the repo
+               under assets/video/ and point at it. -->
+          <div class="vid-add">
+            <input id="vidUrl" type="text" placeholder="assets/video/lehenga-01.mp4 (only if already in the repo)">
+            <button type="button" class="btn btn-ghost btn-sm" id="vidAddBtn">Add video</button>
+          </div>
+          <p class="muted" style="font-size:.78rem;margin:6px 0 0">
+            Videos upload above like photos. This box is only for a clip already in the repo.
+          </p>
+
+          <div class="shots" id="shots"></div>
+        </div>
+      </div>
+      <div class="msg" id="itemMsg"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="itemSave">Save piece</button>
+      <button class="btn btn-ghost" data-close>Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------------------- category modal -->
+<div class="modal" id="catModal">
+  <div class="modal-card" style="max-width:520px">
+    <div class="modal-head"><h3 id="catModalTitle">Add category</h3>
+      <button class="x-btn" data-close>✕</button></div>
+    <div class="modal-body">
+      <label for="cName">Name *</label><input id="cName" placeholder="Lehenga">
+      <label for="cSlug">Slug *</label><input id="cSlug" placeholder="lehenga">
+      <label for="cParent">Sits under</label><select id="cParent"></select>
+      <label for="cSequence">Order</label><input id="cSequence" type="number" min="1" step="1" value="1">
+      <label for="cActive">Shown on the site</label>
+      <select id="cActive"><option value="true">Yes</option><option value="false">No</option></select>
+      <div class="msg" id="catMsg"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="catSave">Save</button>
+      <button class="btn btn-ghost" data-close>Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------------------- enquiry modal -->
+<div class="modal" id="eqModal">
+  <div class="modal-card" style="max-width:560px">
+    <div class="modal-head"><h3>Enquiry</h3><button class="x-btn" data-close>✕</button></div>
+    <div class="modal-body" id="eqBody"></div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="eqSave">Save reply</button>
+      <button class="btn btn-ghost" data-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
