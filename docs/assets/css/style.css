@@ -848,6 +848,12 @@ section + section { border-top: 1px solid rgba(184,145,47,.16); }
   color: rgba(255,255,255,.72);
 }
 .hero-credit-line { width: 42px; height: 1px; background: var(--gold); display: block; }
+/* Sits in the credit line rather than floating over the headline, so it
+   reads as "this film has sound" instead of a stray control. */
+.hero-sound {
+  position: static; width: 32px; height: 32px; font-size: .85rem;
+  flex: 0 0 auto; margin-left: 4px;
+}
 /* The lookbook tiles are links into each category now. */
 a.look { display: block; text-decoration: none; color: inherit; }
 a.look:hover { box-shadow: var(--shadow-md); }

@@ -10,6 +10,65 @@
    several clips on one page do not chew through a phone's data or battery.
    ------------------------------------------------------------------------- */
 
+/* Several clips share one page, so only one of them may be audible. Each
+   sound button registers a "mute yourself" callback here; turning any one on
+   turns the rest off. Without this a visitor scrolling down ends up with the
+   shop reel and the owner's film talking over each other. */
+window.VideoAudio = (function () {
+  'use strict';
+  var others = [];
+
+  return {
+    register: function (muteMe) { others.push(muteMe); },
+    /** Call just before unmuting: silences every other clip on the page. */
+    claim: function (mine) {
+      others.forEach(function (muteMe) { if (muteMe !== mine) muteMe(); });
+    }
+  };
+})();
+
+/** Wires one <video> to one button, with the shared audio rule applied. */
+function soundButton(video, btn) {
+  function paint() {
+    btn.textContent = video.muted ? '🔇' : '🔊';
+    var label = video.muted ? 'Turn sound on' : 'Turn sound off';
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+  }
+
+  function mute() { video.muted = true; paint(); }
+  window.VideoAudio.register(mute);
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (video.muted) {
+      window.VideoAudio.claim(mute);
+      video.muted = false;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { /* autoplay refused */ });
+    } else {
+      video.muted = true;
+    }
+    paint();
+  });
+
+  // A clip that scrolls away goes quiet rather than following you down.
+  video.addEventListener('pause', function () {
+    if (!video.muted) mute();
+  });
+
+  paint();
+}
+
+/* The hero film is a background wash, so it has no scroll handling of its
+   own — only a toggle, since it cannot autoplay with sound. */
+(function () {
+  'use strict';
+  var v = document.getElementById('heroVideo');
+  var btn = document.getElementById('heroSound');
+  if (v && btn) soundButton(v, btn);
+})();
+
 /* The wide store stage is hand-built in the markup (two <video> elements,
    one blurred), so it needs its own sound toggle and scroll handling. */
 (function () {
@@ -23,16 +82,10 @@
   var btn = document.getElementById('storeSound');
   if (!fg) return;
 
-  if (btn) {
-    btn.addEventListener('click', function () {
-      fg.muted = !fg.muted;
-      btn.textContent = fg.muted ? '🔇' : '🔊';
-      var label = fg.muted ? 'Turn sound on' : 'Turn sound off';
-      btn.setAttribute('aria-label', label);
-      btn.title = label;
-      if (!fg.muted) fg.play();
-    });
-  }
+  // The blurred backdrop is decoration; it stays silent whatever happens.
+  if (bg) bg.muted = true;
+
+  if (btn) soundButton(fg, btn);
 
   // Pause when off screen; the blurred copy follows the sharp one.
   if ('IntersectionObserver' in window) {
@@ -78,18 +131,7 @@
     var sound = document.createElement('button');
     sound.type = 'button';
     sound.className = 'vid-sound';
-    sound.setAttribute('aria-label', 'Turn sound on');
-    sound.title = 'Turn sound on';
-    sound.textContent = '🔇';
-    sound.addEventListener('click', function (e) {
-      e.preventDefault();
-      v.muted = !v.muted;
-      sound.textContent = v.muted ? '🔇' : '🔊';
-      var label = v.muted ? 'Turn sound on' : 'Turn sound off';
-      sound.setAttribute('aria-label', label);
-      sound.title = label;
-      if (!v.muted) v.play();
-    });
+    soundButton(v, sound);
 
     wrap.appendChild(v);
     wrap.appendChild(sound);

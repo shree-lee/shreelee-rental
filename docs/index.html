@@ -56,7 +56,7 @@
   <!-- The owner's film, running behind the hero. Lightly softened so the
        type stays readable over it; the scrim does the rest. -->
   <div class="hero-wash" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" onerror="this.remove()">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" onerror="this.remove()">
       <source src="assets/video/hero-owner.mp4" type="video/mp4">
     </video>
   </div>
@@ -84,10 +84,13 @@
       </div>
     </div>
 
-    <!-- Credit line for the film running behind. -->
+    <!-- Credit line for the film running behind, and its sound toggle. The
+         film starts silent because browsers refuse to autoplay with sound. -->
     <div class="hero-credit">
       <span class="hero-credit-line"></span>
       <span>Laxmi Khamkar Yadav &middot; Owner</span>
+      <button type="button" class="vid-sound hero-sound" id="heroSound"
+              aria-label="Turn sound on" title="Turn sound on">🔇</button>
     </div>
   </div>
 
