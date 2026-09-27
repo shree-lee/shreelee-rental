@@ -135,11 +135,20 @@
       }
       $('myBookings').innerHTML = r.bookings.map(function (b) {
         var img = b.image ? '<img src="' + S.esc(b.image) + '" alt="">' : '<div class="ph">श्री</div>';
+
+        /* Once a piece has actually been out, invite the review from here —
+           nobody goes hunting back through the collection to leave one. */
+        var canRate = b.itemId && (b.status === 'PICKED_UP' || b.status === 'RETURNED');
+        var rate = canRate
+          ? '<a class="rate-link" href="item.html?id=' + encodeURIComponent(b.itemId) +
+            '#reviewsBlock">★ Rate this piece</a>'
+          : '';
+
         return '<div class="bk-card">' + img +
           '<div><div class="ref">' + S.esc(b.ref) + '</div>' +
             '<h3>' + S.esc(b.item) + '</h3>' +
             '<div class="when muted">' + S.esc(S.dateOut(b.from)) + ' → ' +
-              S.esc(S.dateOut(b.to)) + '</div></div>' +
+              S.esc(S.dateOut(b.to)) + '</div>' + rate + '</div>' +
           '<div style="text-align:right">' +
             '<span class="chip ' + S.esc(b.status) + '">' +
               S.esc(b.status.replace('_', ' ')) + '</span>' +

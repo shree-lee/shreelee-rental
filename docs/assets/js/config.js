@@ -1,12 +1,12 @@
 /* -------------------------------------------------------------------------
    श्रीली Rental Store — one place for every setting.
 
-   MANDAL_API style: paste the Apps Script web app url here once the backend
-   is deployed. Until then the site runs on the sample items below, so the
-   design can be reviewed before any data exists.
+   The Apps Script web app url below is the live backend. Replace it only if
+   the script is redeployed to a brand new deployment id — a "New version" on
+   the existing deployment keeps this url working.
    ------------------------------------------------------------------------- */
 
-window.SHREELEE_API = 'PASTE_APPS_SCRIPT_EXEC_URL_HERE';
+window.SHREELEE_API = 'https://script.google.com/macros/s/AKfycbzpO5hJzXoxCynuxmBxQB_gctwJK6FiB1MU8PwDgkgiNEUqHYj1H4y99ujhgZxRr_Sa5w/exec';
 
 window.SHOP = {
   name: 'श्रीली Rental Store',

@@ -161,7 +161,12 @@
             S.esc(b.status.replace('_', ' ')) + '</span>' +
           '<span class="amt">' + S.money(b.rent) + '</span>' +
         '</div>' +
-        '<div class="hist-note">' + S.esc(WHATS_NEXT[b.status] || '') + '</div>' +
+        '<div class="hist-note">' + S.esc(WHATS_NEXT[b.status] || '') +
+          (b.itemId && (b.status === 'PICKED_UP' || b.status === 'RETURNED')
+            ? ' <a class="rate-link" href="item.html?id=' + encodeURIComponent(b.itemId) +
+              '#reviewsBlock">★ Rate this piece</a>'
+            : '') +
+        '</div>' +
       '</div>';
     }).join('');
   }

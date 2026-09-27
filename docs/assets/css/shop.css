@@ -206,6 +206,15 @@ a.acct-stat:hover { background: var(--rose-soft); }
   background: var(--blush); border-radius: 8px; padding: 9px 12px; margin-top: 4px;
 }
 
+/* Shortcut back to the review box, offered once a piece has been out. */
+.rate-link {
+  display: inline-block; margin-top: 6px;
+  font-size: .82rem; font-weight: 600; color: var(--plum);
+  text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px;
+}
+.rate-link:hover { color: var(--gold); }
+.bk-card .rate-link { margin-top: 8px; }
+
 /* ------------------------------------------------------------------ auth */
 
 .auth-shell { max-width: 460px; margin: 6vh auto 10vh; padding: 0 20px; }

@@ -179,6 +179,14 @@ window.Reviews = (function () {
         $('revVerified').textContent =
           'Reviews come from customers who have actually rented this piece.';
       }
+
+      /* Arriving from "Rate this piece" in booking history. The page loads
+         its item over the network, so the browser's own anchor jump has
+         already fired against an empty page by now — do it again here. */
+      if (location.hash === '#reviewsBlock') {
+        $('reviewsBlock').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (item.canReview) $('revComment').focus({ preventScroll: true });
+      }
     }
   };
 })();

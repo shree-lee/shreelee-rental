@@ -441,7 +441,7 @@ section.tint { background: var(--blush); }
 
 .owner-split { display: grid; gap: 34px; align-items: center; }
 @media (min-width: 860px) {
-  .owner-split { grid-template-columns: minmax(260px, 360px) 1fr; gap: 60px; }
+  .owner-split { grid-template-columns: 1fr minmax(260px, 360px); gap: 60px; }
 }
 
 .owner-shot {
@@ -848,3 +848,7 @@ section + section { border-top: 1px solid rgba(184,145,47,.16); }
   color: rgba(255,255,255,.72);
 }
 .hero-credit-line { width: 42px; height: 1px; background: var(--gold); display: block; }
+/* The lookbook tiles are links into each category now. */
+a.look { display: block; text-decoration: none; color: inherit; }
+a.look:hover { box-shadow: var(--shadow-md); }
+a.look figcaption { z-index: 3; }

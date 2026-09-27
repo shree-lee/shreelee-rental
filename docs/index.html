@@ -10,6 +10,8 @@
 <meta property="og:title" content="श्रीली Rental Store — Elegant styles for every occasion">
 <meta property="og:description" content="Bridal · Festive · Party Wear on rent. Kodoli, Satara.">
 <meta name="theme-color" content="#4a1033">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +41,7 @@
     <nav class="site-nav" id="siteNav">
       <a href="collection.html">Shop now</a>
       <a href="#story">Our story</a>
-      <a href="#occasions">Occasions</a>
+      <a href="#lookbook">Occasions</a>
       <a href="#owner">About</a>
       <a href="#how">How it works</a>
       <a href="#enquire">Ask us</a>
@@ -179,48 +181,12 @@
       </p>
     </div>
 
-    <!-- TODO: save the mehendi photograph as assets/img/story.jpg -->
     <figure class="story-shot">
       <img src="assets/img/story.jpg" alt="Jayashree and Vaishali, whose names the store carries"
            onerror="this.closest('.story-shot').classList.add('empty');this.remove()">
       <span class="ph">जयश्री &amp; वैशाली</span>
       <figcaption>जयश्री आणि वैशाली</figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- ---------------------------------------------------------- occasions -->
-<section id="occasions">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="eyebrow">Shop by occasion</p>
-      <h2>What are you dressing for?</h2>
-      <div class="orn"><i></i></div>
-      <p class="lead">Every piece is available to rent by the day, cleaned and ready.</p>
-    </div>
-
-    <div class="grid cols-4">
-      <a class="occasion" href="collection.html?cat=bridal">
-        <img src="assets/img/cat-bridal.jpg" alt="" onerror="this.remove()">
-        <span class="ph">Bridal</span>
-        <figcaption>Bridal</figcaption>
-      </a>
-      <a class="occasion" href="collection.html?cat=festive">
-        <img src="assets/img/cat-festive.jpg" alt="" onerror="this.remove()">
-        <span class="ph">Festive</span>
-        <figcaption>Festive</figcaption>
-      </a>
-      <a class="occasion" href="collection.html?cat=party">
-        <img src="assets/img/cat-party.jpg" alt="" onerror="this.remove()">
-        <span class="ph">Party</span>
-        <figcaption>Party Wear</figcaption>
-      </a>
-      <a class="occasion" href="collection.html?cat=jewellery">
-        <img src="assets/img/cat-jewellery.jpg" alt="" onerror="this.remove()">
-        <span class="ph">Jewellery</span>
-        <figcaption>Jewellery</figcaption>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -258,35 +224,43 @@
 <section class="tint" id="lookbook">
   <div class="wrap">
     <div class="section-head center">
-      <p class="eyebrow">Lookbook</p>
-      <h2>Pieces from the rail</h2>
+      <p class="eyebrow">Shop by occasion</p>
+      <h2>What are you dressing for?</h2>
       <div class="orn"><i></i></div>
-      <p class="lead">A glimpse of what's in store. The full collection is inside.</p>
+      <p class="lead">
+        Every piece is available to rent by the day, cleaned and ready.
+        Tap an occasion to see what's free on your dates.
+      </p>
     </div>
 
-    <!-- Mixed grid: two stills and two films. Shapes are declared per tile
-         so nothing is cropped into a sliver. -->
+    <!-- One grid doing both jobs: the lookbook imagery, and the way into
+         each category. Two tiles are films, two are stills. -->
     <div class="look-grid">
-      <figure class="look tall">
-        <img src="assets/img/shot-1.jpg" alt="A piece from the collection" loading="lazy"
+      <a class="look tall" href="collection.html?cat=party">
+        <img src="assets/img/shot-1.jpg" alt="Party wear on rent" loading="lazy"
              onerror="this.closest('.look').classList.add('empty');this.remove()">
-        <span class="ph">Photo</span>
-      </figure>
+        <span class="ph">Party</span>
+        <figcaption>Party Wear</figcaption>
+      </a>
 
-      <figure class="look tall" data-video="assets/video/jewellery.mp4">
-        <span class="ph">Jewellery film</span>
+      <a class="look tall" href="collection.html?cat=festive"
+         data-video="assets/video/jewellery.mp4">
+        <span class="ph">Festive</span>
+        <figcaption>Festive</figcaption>
+      </a>
+
+      <a class="look tall" href="collection.html?cat=bridal">
+        <img src="assets/img/shot-2.jpg" alt="Bridal wear on rent" loading="lazy"
+             onerror="this.closest('.look').classList.add('empty');this.remove()">
+        <span class="ph">Bridal</span>
+        <figcaption>Bridal</figcaption>
+      </a>
+
+      <a class="look tall" href="collection.html?cat=jewellery"
+         data-video="assets/video/clip-b.mp4">
+        <span class="ph">Jewellery</span>
         <figcaption>Jewellery</figcaption>
-      </figure>
-
-      <figure class="look wide">
-        <img src="assets/img/shot-2.jpg" alt="Inside the store" loading="lazy"
-             onerror="this.closest('.look').classList.add('empty');this.remove()">
-        <span class="ph">Photo</span>
-      </figure>
-
-      <figure class="look tall" data-video="assets/video/clip-b.mp4">
-        <span class="ph">Film</span>
-      </figure>
+      </a>
     </div>
 
     <p class="center" style="margin-top:36px">
@@ -308,7 +282,6 @@
 
       <ul class="milestones">
         <li>
-          <!-- TODO: put the real opening month here -->
           <span class="ms-when">Year one</span>
           <h3>The store opens</h3>
           <p>A handful of bridal and festive pieces, and word of mouth across Kodoli.</p>
@@ -340,13 +313,6 @@
 <!-- ------------------------------------------------------------- owner -->
 <section class="tint" id="owner">
   <div class="wrap owner-split">
-    <!-- The owners' film. assets/img/owner.jpg is used as its poster frame,
-         so her portrait is what shows while the video loads. -->
-    <div class="vid-slot" data-video="assets/video/owners.mp4"
-         data-poster="assets/img/owner.jpg">
-      <span class="ph">Laxmi &amp; family</span>
-    </div>
-
     <div class="owner-copy">
       <p class="eyebrow">Meet the owner</p>
       <h2>Laxmi Khamkar Yadav</h2>
@@ -364,6 +330,15 @@
         Kodoli, Satara · <a href="https://www.instagram.com/shreelee_rental/"
         target="_blank" rel="noopener">@shreelee_rental</a>
       </p>
+    </div>
+
+    <!-- Laxmi and her husband. Her portrait is the poster frame, so the panel
+         shows a face straight away rather than a black box while it loads. -->
+    <div class="vid-slot" data-video="assets/video/owners.mp4"
+         data-poster="assets/img/owner.jpg">
+      <img src="assets/img/owner.jpg" alt="Laxmi Khamkar Yadav and her husband"
+           style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg)"
+           onerror="this.remove()">
     </div>
   </div>
 </section>
@@ -425,8 +400,7 @@
       </p>
       <p style="margin-top:22px">
         <strong>श्रीली Rental Store</strong><br>
-        Kodoli, Satara, Maharashtra<br>
-        <!-- TODO: full address line -->
+        Kodoli, Satara, Maharashtra
       </p>
       <p>
         <a href="tel:+919168754478"><strong>91687 54478</strong></a> ·
